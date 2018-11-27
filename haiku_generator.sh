@@ -16,9 +16,9 @@ fi
 fi
 ##
 #check the syllables number
+cd get_synonym
 syllables="$(python syllables_checker.py $line)"
 echo $syllables
-
 #here, set syllables to the syllables number after running the check
 while [ $syllables -ne 5 ]
 do
@@ -36,5 +36,4 @@ do
 ###
 done
 echo "you entered five syllables!"
-cd get_synonym
 node acquire_synonyms.js $line >../synonym.txt
