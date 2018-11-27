@@ -16,17 +16,25 @@ fi
 fi
 ##
 #check the syllables number
-##
+syllables="$(python syllables_checker.py $line)"
+echo $syllables
+
 #here, set syllables to the syllables number after running the check
-syllables=5
- 
-while [ $syllables -ne 5 ] 
+while [ $syllables -ne 5 ]
 do
   echo "you are not entering five syllables!"
-  read -p "enter the first line of the haiku poem:" new_line
+  read -p "enter the first line of the haiku poem(five syllables), enter e to exit:" line
+  if ((${#line} == 1)); then
+    if (($line == e)); then
+      exit 1
+    fi
+  fi
+  syllables="$(python syllables_checker.py $line)"
+  echo $syllables
 ###
 #execute the syllables checker here on new_line
 ###
-done 
+done
+echo "you entered five syllables!"
 cd get_synonym
 node acquire_synonyms.js $line >../synonym.txt
