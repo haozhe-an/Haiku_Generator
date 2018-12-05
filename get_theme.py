@@ -27,7 +27,7 @@ similarity_game = 0
 similarity_life = 0
 similarity_money = 0
 similarity_person = 0
-model = Word2Vec.load("model/word2vec.model")
+model = Word2Vec.load("All_models/full_poem_model/word2vec.model")
 
 
 for word in input_line:
@@ -38,12 +38,14 @@ for word in input_line:
     similarity_person += model.similarity(word, 'person')
 result = max([similarity_time,similarity_game,similarity_life,similarity_money,similarity_person])
 if result == similarity_time:
-    model = Word2Vec.load("time_model/word2vec.model")
+    model = Word2Vec.load("All_models/time_model/word2vec.model")
 elif result == similarity_game:
-    model = Word2Vec.load("game_model/word2vec.model")
+    model = Word2Vec.load("All_models/game_model/word2vec.model")
 elif result == similarity_life:
-    model = Word2Vec.load("life_model/word2vec.model")
+    model = Word2Vec.load("All_models/life_model/word2vec.model")
 elif result == similarity_money:
-    model = Word2Vec.load("money_model/word2vec.model")
+    model = Word2Vec.load("All_models/money_model/word2vec.model")
 else:
-    model = Word2Vec.load("person_model/word2vec.model")
+    model = Word2Vec.load("All_models/person_model/word2vec.model")
+
+####at this point model will represent the correct model out of five models
