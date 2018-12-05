@@ -10,9 +10,9 @@ fi
 read -p "enter the first line of the haiku poem(five syllables), enter e to exit: " line
 #check if user want to exit the program
 if ((${#line} == 1)); then
-if (($line == e)); then
-  exit 1
-fi
+  if (($line == e)); then
+    exit 1
+  fi
 fi
 ##
 #check the syllables number
@@ -37,3 +37,5 @@ do
 done
 echo "you entered five syllables!"
 node acquire_synonyms.js $line >../synonym.txt
+cd ..
+python get_theme.py $line
